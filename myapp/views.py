@@ -31,4 +31,12 @@ def student_update(request, pk):
     if student.is_valid():
         student.save()
     return Response( student_now.data)
+
+@api_view(["DELETE"])
+def student_delete(request, pk):
+    student = Student.objects.get(id=pk)
+    student.delete()
+    return Response(f"student:{student} deleted!")
+
+
     
